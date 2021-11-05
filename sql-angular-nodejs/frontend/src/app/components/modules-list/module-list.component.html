@@ -1,0 +1,76 @@
+<div class="container">
+  <button mdbBtn type="button" color="dark-green" class="waves-light" 
+  mdbWavesEffect routerLink="/add" style="float: right;" outline = "true">
+    <mdb-icon fas icon="plus-circle"></mdb-icon> Add Module
+  </button>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <div class="md-form">
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          class="form-control"
+          id="search"
+          mdbInput
+        />
+        <label for="search">Search</label>
+      </div>
+    </div>
+  </div>
+  <table mdbTable #tableEl="mdbTable" class="z-depth-1" class="table table-bordered table-responsive-md text-center">
+    <thead class="grey lighten-3 black-text">
+      <tr>
+        <th
+          *ngFor="let head of headElements; let i = index"
+          scope="col"
+        >
+          {{head}}
+        </th>
+      </tr>
+    </thead>
+    <tbody  *ngIf="modules?.length>0">
+      <tr 
+      *ngFor="let module of modules; let i = index"
+      >
+        <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" scope="row"
+          [ngStyle]="{'background-color': module_id== module.Module_ID ? '#d7f4f5' : 'white' }">
+          <a [routerLink]="['/module', module.Module_ID]">{{module.Module_ID}} </a></th>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+          [ngStyle]="{'background-color': module.Module_ID == module_id ? '#d7f4f5' : 'white' }">{{module.ModuleName}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+          [ngStyle]="{'background-color': module.Module_ID == module_id ? '#d7f4f5' : 'white' }">{{module.DescrName}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+          [ngStyle]="{'background-color': module.Module_ID == module_id ? '#d7f4f5' : 'white' }">{{module.Purpose}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+          [ngStyle]="{'background-color': module.Module_ID == module_id ? '#d7f4f5' : 'white' }">{{module.ModuleCategory}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+          [ngStyle]="{'background-color': module.Module_ID == module_id ? '#d7f4f5' : 'white' }">{{module.LastBuild | date: 'MM/dd/yyyy hh:mm:ss':'UTC +7'}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+          [ngStyle]="{'background-color': module.Module_ID == module_id ? '#d7f4f5' : 'white' }">{{module.LastExecuted | date: 'MM/dd/yyyy hh:mm:ss':'UTC +7'}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+          [ngStyle]="{'background-color': module.Module_ID == module_id ? '#d7f4f5' : 'white' }">{{module.Nbr_ksh}}</td>
+        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+          <!-- <button [routerLink]="['/edit', module.Module_ID]" -->
+            <button (click)=edit(module)
+            type="button" mdbBtn color="primary" size="sm" outline = "true" mdbWavesEffect >
+            <mdb-icon fas icon="pencil-alt"></mdb-icon>
+        </button> </td>
+          <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"><button *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+            type="button" mdbBtn color="danger" outline = "true" size="sm" mdbWavesEffect (click)="delete(module.Module_ID)">
+            <mdb-icon fas icon="ban"></mdb-icon>
+          </button></td>
+
+      </tr>
+    </tbody>
+    <tfoot >
+      <tr>
+        <td colspan="8">
+          <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="modules"></mdb-table-pagination>
+        </td>
+      </tr>
+      </tfoot>
+  </table>
+</div>

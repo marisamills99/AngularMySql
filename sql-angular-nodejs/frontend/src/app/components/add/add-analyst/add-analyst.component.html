@@ -1,0 +1,58 @@
+
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        
+        <div class="form-group">
+            <label for="Analyst_First">First Name</label>
+            <input
+              class="form-control"
+              id="Analyst_First"
+              required
+              [(ngModel)]="newModule.Analyst_First"
+              name="Analyst_First"
+            />
+          </div>
+    
+          <div class="form-group">
+            <label for="Analyst_Last">Last Name</label>
+            <input
+              class="form-control"
+              id="Analyst_Last"
+              required
+              [(ngModel)]="newModule.Analyst_Last"
+              name="Analyst_Last"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Analyst_Org">Org</label>
+            <input
+              type="text"
+              class="form-control"
+              id="Analyst_Org"
+              required
+              [(ngModel)]="newModule.Analyst_Org"
+              name="Analyst_Org"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Analyst_Phone">Phone Number</label>
+            <input
+              class="form-control"
+              id="Analyst_Phone"
+              required
+              [(ngModel)]="newModule.Analyst_Phone"
+              name="Analyst_Phone"
+            />
+          </div>
+    
+         
+        <button (click)="saveModule()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>New Analyst was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="NewModule()">Add another</button>
+      </div>
+    </div>
+  </div>

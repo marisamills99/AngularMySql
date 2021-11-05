@@ -1,0 +1,47 @@
+
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        
+        <div class="form-group">
+            <label for="Analyst_ID">Analyst ID</label>
+            <input
+              class="form-control"
+              id="Analyst_ID"
+              required
+              [(ngModel)]="newModule.Analyst_ID"
+              name="Analyst_ID"
+            />
+          </div>
+    
+          <div class="form-group">
+            <label for="Workflow_Notes">Notes</label>
+            <input
+              class="form-control"
+              id="Workflow_Notes"
+              required
+              [(ngModel)]="newModule.Workflow_Notes"
+              name="Workflow_Notes"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Workflow_Status">Status</label>
+            <input
+              type="text"
+              class="form-control"
+              id="Workflow_Status"
+              required
+              [(ngModel)]="newModule.Workflow_Status"
+              name="Workflow_Status"
+            />
+    
+         
+        <button (click)="saveModule()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>New Workflow was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="NewModule()">Add another</button>
+      </div>
+    </div>
+  </div>

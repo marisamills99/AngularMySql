@@ -1,0 +1,48 @@
+
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+          
+        <div class="form-group">
+          <label for="Module_ID">Module ID</label>
+          <input
+            class="form-control"
+            id="Module_ID"
+            required
+            [(ngModel)]="newModule.Module_ID"
+            name="Module_ID"
+          />
+        </div>
+    
+          <div class="form-group">
+            <label for="Output_Filename">Output Name</label>
+            <input
+              class="form-control"
+              id="Output_Filename"
+              required
+              [(ngModel)]="newModule.Output_Filename"
+              name="Output_Filename"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Output_Notes">Notes</label>
+            <input
+              type="text"
+              class="form-control"
+              id="Output_Notes"
+              required
+              [(ngModel)]="newModule.Output_Notes"
+              name="Output_Notes"
+            />
+          </div>
+    
+         
+        <button (click)="saveModule()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>New Output was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="NewModule()">Add another</button>
+      </div>
+    </div>
+  </div>

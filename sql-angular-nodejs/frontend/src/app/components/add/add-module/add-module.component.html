@@ -1,0 +1,70 @@
+
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        
+  
+        <div class="form-group">
+          <label for="ModuleName">Module Name</label>
+          <input
+            class="form-control"
+            id="ModuleName"
+            required
+            [(ngModel)]="newModule.ModuleName"
+            name="ModuleName"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="DescrName">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="DescrName"
+              required
+              [(ngModel)]="newModule.DescrName"
+              name="DescrName"
+            />
+          </div>
+    
+          <div class="form-group">
+            <label for="Purpose">Purpose</label>
+            <input
+              class="form-control"
+              id="Purpose"
+              required
+              [(ngModel)]="newModule.Purpose"
+              name="Purpose"
+            />
+          </div>
+          <div class="form-group">
+            <label for="ModuleCategory">Module Category</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ModuleCategory"
+              required
+              [(ngModel)]="newModule.ModuleCategory"
+              name="ModuleCategory"
+            />
+          </div>
+    
+          <div class="form-group">
+            <label for="Nbr_ksh">Ksh(s)</label>
+            <input
+              class="form-control"
+              id="Nbr_ksh"
+              required
+              [(ngModel)]="newModule.Nbr_ksh"
+              name="Nbr_ksh"
+            />
+          </div>
+        <button (click)="saveModule()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>New Module was submitted successfully!</h4>
+        <button class="btn btn-success" (click)="NewModule()">Add another</button>
+      </div>
+    </div>
+  </div>

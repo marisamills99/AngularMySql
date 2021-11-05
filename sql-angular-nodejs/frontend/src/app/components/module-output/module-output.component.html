@@ -1,0 +1,59 @@
+<div class="container">
+  <button mdbBtn type="button" color="dark-green" class="waves-light" 
+  mdbWavesEffect routerLink="/addOutput" style="float: right;" outline = "true">
+    <mdb-icon fas icon="plus-circle"></mdb-icon> Add Output
+  </button>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <div class="md-form">
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            class="form-control"
+            id="search"
+            mdbInput
+          />
+          <label for="search">Search</label>
+        </div>
+      </div>
+    </div>
+    <table mdbTable #tableEl="mdbTable"  class="table table-bordered table-responsive-md text-center">
+      <thead class="grey lighten-3 black-text">
+        <tr>
+          <th
+            *ngFor="let head of headElements; let i = index"
+            scope="col"
+          >
+            {{head}}
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngIf="modules?.length>0">
+        <tr 
+        *ngFor="let module of modules; let i = index"
+        >
+          <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" scope="row">{{module.Output_ID}}</th>
+          <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+            <a [routerLink]="['/modules', module.Module_ID]">{{module.Module_ID}}</a></td>
+          <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{module.Output_Filename}}</td>
+          <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{module.Output_Notes}}</td>
+          <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{module.LastUpdated | date: 'MM/dd/yyyy':'UTC +7'}}</td>
+          <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+            <button (click)=edit(module)
+            type="button" mdbBtn color="primary" size="sm" outline = "true" mdbWavesEffect >
+            <mdb-icon fas icon="pencil-alt"></mdb-icon>
+        </button></td>
+        </tr>
+      </tbody>
+      <tfoot >
+        <tr>
+          <td colspan="5">
+            <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="modules"></mdb-table-pagination>
+          </td>
+        </tr>
+        </tfoot>
+    </table>
+  </div>

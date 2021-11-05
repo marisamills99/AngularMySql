@@ -1,0 +1,66 @@
+<h4 >Inputs for Module {{inputs[0].ModuleName}}:</h4>
+<div class="container">
+    <table mdbTable  bordered="true" class="z-depth-1 text-center" *ngIf="inputs[0].Input_Filename" >
+      <thead class="grey lighten-3 black-text">
+        <tr>
+          <th
+            *ngFor="let head of inheadElements; let i = index"
+            scope="col"
+          >
+            {{head}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr 
+        *ngFor="let module of inputs; let i = index"
+        >
+        
+        <td  >{{module.Input_Id}}</td>
+        <td  >{{module.Input_Filename}}</td>
+        <td  >{{module.Input_Notes}}</td>
+  
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+ 
+ 
+  <div class="card" *ngIf="!inputs[0].Input_Filename">
+    <div class="card-body">
+      <p  >No Input files needed</p>
+    </div>
+  </div>
+  <hr>
+  <h4>Outputs for Module {{inputs[0].ModuleName}}:</h4>
+  <div class="card "*ngIf="!outputs[0].Output_Id ">
+    <div class="card-body">
+      <p >No Output files needed</p>
+    </div>
+  </div>
+  <div class="container">
+    
+    <table mdbTable bordered="true" class="z-depth-1 text-center" *ngIf="outputs[0].Output_Id">
+      <thead class="grey lighten-3 black-text">
+        <tr>
+          <th
+            *ngFor="let head of outheadElements; let i = index"
+            scope="col"
+          >
+            {{head}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr 
+        *ngFor="let module of outputs; let i = index"
+        >
+          <td  >{{module.Output_Id}}</td>
+          <td  >{{module.Output_Filename}}</td>
+          <td  >{{module.Output_Notes}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
